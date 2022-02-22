@@ -24,7 +24,7 @@ Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::group(['prefix' => 'salary', 'middlewate' => 'auth:sanctum'], function (){
+Route::group(['prefix' => 'salary', 'middleware' => 'auth:sanctum'], function (){
    Route::get('/', [SalaryController::class, 'index']);
    Route::post('calculate', [SalaryController::class, 'calculate']);
    Route::post('calculate/save', [SalaryController::class, 'calculateSave']);
