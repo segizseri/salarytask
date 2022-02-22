@@ -15,13 +15,14 @@ class CreateSalariesTable extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('salary');
-            $table->string('iit');
-            $table->string('cps');
-            $table->string('ccshi');
-            $table->string('cshi');
-            $table->string('salaryInHand');
+            $table->string('name')->nullable();
+            $table->string('salary')->nullable();
+            $table->string('iit')->nullable();
+            $table->string('cps')->nullable();
+            $table->string('ccshi')->nullable();
+            $table->string('cshi')->nullable();
+            $table->string('ssc')->nullable();
+            $table->string('salaryInHand')->nullable();
             $table->timestamps();
         });
     }

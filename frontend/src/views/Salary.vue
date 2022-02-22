@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <h1>Запрлатный калькулятор</h1>
-      <b-form @submit="onCalculate">
+      <b-form @submit="onCalculate($event)">
         <b-form-input v-model="calcForm.salary" placeholder="Оклад"></b-form-input>
         <b-form-input v-model="calcForm.workedDays" placeholder="Отработанное количество дней"></b-form-input>
         <b-form-group label="Имеется ли налоговый вычет 1 МЗП" label-for="taxDeduction">
@@ -22,7 +22,7 @@
       <b-card class="mt-3" header="Результат">
         <pre class="m-0">{{ saveForm }}</pre>
       </b-card>
-      <b-button type="submit" variant="success" v-on:click="onSave">Сохранить</b-button>
+      <b-button type="submit" variant="success" v-on:click="onSave($event)">Сохранить</b-button>
       </div>
 </template>
 
@@ -48,16 +48,17 @@ export default {
     }
   },
   methods: {
-    onCalculate () {
-      axios.post('http://localhost:8000/api/salary/calculate', this.calcForm, {
-      }).then((res) => {
-        this.saveForm = res
+    onCalculate (e) {
+      e.preventDefault()
+      axios.post('/salary/calculate', this.calcForm).then((res) => {
+        console.log(res)
+        this.saveForm = res.data
       })
     },
-    onSave () {
-      axios.post('http://localhost:8000/api/salary/calculate/save', this.saveForm, {
-      }).then((res) => {
-        this.saveForm = res
+    onSave (e) {
+      e.preventDefault()
+      axios.post('/salary/calculate/save', this.saveForm).then((res) => {
+        console.log(res)
       })
     }
   }

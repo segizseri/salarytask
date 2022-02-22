@@ -86,6 +86,7 @@ class SalaryController extends Controller
       $salary->iit = $request->iit;
       $salary->cps = $request->cps;
       $salary->ccshi = $request->ccshi;
+      $salary->cshi = $request->cshi;
       $salary->ssc = $request->ssc;
       $salary->salaryInHand = $request->salaryInHand;
       $salary->save();
